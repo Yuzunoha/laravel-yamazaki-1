@@ -39,7 +39,7 @@ RUN echo "${DOCKER_USER}:${DOCKER_PASSWORD}" | chpasswd
 RUN usermod -aG sudo ${DOCKER_USER}
 
 # 作業ディレクトリを指定する
-WORKDIR /var/www/html/laravelapp
+WORKDIR /var/www/html/cms
 
 # 作成したユーザに切り替える(apacheが動かせないためコメントアウトする)
 # USER ${DOCKER_USER}

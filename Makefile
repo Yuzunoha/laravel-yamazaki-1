@@ -24,3 +24,5 @@ create-test-db:
 	docker-compose exec db bash -c "echo 'GRANT ALL PRIVILEGES ON docker_test_db.* TO docker_db_user' | mysql -u root -proot"
 phpunit:
 	$(bash-c) 'vendor/bin/phpunit'
+mysql:
+	docker-compose exec db bash -c 'mysql -u root -proot'

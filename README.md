@@ -1,7 +1,7 @@
 ## まえがき
 
-- `make` から始まるコマンド(`make init` 等)は、Makefile があるディレクトリ(リポジトリ直下)で実行すること
-- `docker-compose` から始まるコマンド(`docker-compose ps` 等)は、docker-compose.yml があるディレクトリ(リポジトリ直下)で実行すること
+- `make` から始まるコマンド(`make init` 等)は、Makefile があるディレクトリで実行すること
+- `docker-compose` から始まるコマンド(`docker-compose ps` 等)は、docker-compose.yml があるディレクトリで実行すること
 - コンテナが立ち上がらない等の不具合が出た場合は、作業進捗を push した後にディレクトリを削除し、再度 clone して初回セットアップすることを推奨する(push された作業進捗は失われない)
 - ホスト側で html 配下のファイルを編集すれば app コンテナに反映される
 - composer コマンドや artisan コマンドは app コンテナの bash で実行する

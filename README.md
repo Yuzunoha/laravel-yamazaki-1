@@ -1,85 +1,81 @@
-## セットアップ手順(make を使うやり方, かんたん)
+## 注意
 
-1. Makefile があるディレクトリ(リポジトリ直下)で下記のコマンドを実行する
+- `make` から始まるコマンド(`make init` 等)は、Makefile があるディレクトリ(リポジトリ直下)で実行すること
+- `docker-compose` から始まるコマンド(`docker-compose ps` 等)は、docker-compose.yml があるディレクトリ(リポジトリ直下)で実行すること
+
+## 初回セットアップ手順
+
+1. 下記のコマンドを実行する
 
    ```
    make init
    ```
 
-1. laravelapp をブラウザで表示する
+   - PC の性能にもよるが時間が掛かる
 
-   - http://localhost:10480 にアクセスする
+   - ライブラリ提供元の変更によってログに warning や error が入ることがあるが、`make init` 自体が成功すれば問題ない
 
-## セットアップ手順(make を使わないやり方)
+1. 起動した laravel アプリをブラウザで表示する
 
-1. app コンテナのユーザ ID をホスト側と合わせるためのファイル .env を作成する
+   - http://localhost:10580 にアクセスする
 
-   - docker-compose.yml があるディレクトリで下記のコマンドを実行する
+1. 起動した phpMyAdmin をブラウザで表示する
 
-     ```
-     # `id -u` の実行結果はホストによって異なる
-     echo DOCKER_UID=`id -u` > .env
-     ```
-
-1. コンテナをビルドして起動する
-
-   - docker-compose.yml があるディレクトリで下記のコマンドを実行する
-
-     1. 各コンテナをキャッシュを使わずにビルドする
-
-        ```
-        docker-compose build --no-cache
-        ```
-
-     1. 各コンテナをバックグラウンドで起動する
-        ```
-        docker-compose up -d
-        ```
-
-1. 起動中の app コンテナの bash を、app コンテナのユーザ"docker"の権限で実行する
-
-   ```
-   # appコンテナのユーザ"docker"の権限でappコンテナのbashを実行するコマンド
-   docker-compose exec --user docker app bash
-   ```
-
-   - 下記のようなプロンプトに切り替わる
-
-     ```
-     docker@efba441bb520:/var/www/html/laravelapp$
-     ```
-
-1. app コンテナの bash で laravelapp を install する
-
-   1. composer install を実行する
-
-      ```
-      docker@efba441bb520:/var/www/html/laravelapp$ composer install
-      ```
-
-   1. laravel を動作させるために必要なアクセス権を付与する
-
-      ```
-      docker@efba441bb520:/var/www/html/laravelapp$ chmod 777 -R storage bootstrap/cache
-      ```
-
-1. laravelapp をブラウザで表示する
-
-   - http://localhost:10480 にアクセスする
+   - http://localhost:10581 にアクセスする
 
 ## コンテナを終了する方法
 
-- docker-compose.yml があるディレクトリで下記のコマンドを実行する
+- 下記のコマンドを実行する
 
   ```
-  docker-compose down
+  make down
+  ```
+
+## コンテナを起動する方法
+
+- 下記のコマンドを実行する
+
+  ```
+  make up
+  ```
+
+## コンテナの状態を確認する方法
+
+- 下記のコマンドを実行する
+
+  ```
+  make ps
+  ```
+
+## app コンテナの bash を実行する方法
+
+- 下記のコマンドを実行する
+
+  ```
+  make bash
+  ```
+
+## db コンテナの mysql を実行する方法
+
+- 下記のコマンドを実行する
+
+  ```
+  make mysql
+  ```
+
+## マイグレーションとシーディングを行う方法
+
+- 下記のコマンドを実行する
+
+  ```
+  make migrate-seed
   ```
 
 ## 備考
 
 - ホスト側で html 配下のファイルを編集すれば app コンテナに反映される
 - composer コマンドや artisan コマンドは app コンテナの bash で実行する
-- laravelapp は db コンテナの MySQL データベース:docker_db に接続済みである
+- laravel アプリは db コンテナの MySQL データベース:c9 に接続済みである
 
 ## artisan を使う方法
 
@@ -98,33 +94,3 @@
     ```
     docker@efba441bb520:/var/www/html/laravelapp$ php artisan make:controller HelloController
     ```
-
-## ブラウザで phpMyAdmin を表示する方法
-
-- http://localhost:10481 にアクセスする
-
-## make コマンドの紹介(Makefile 参照)
-
-- make up
-
-  - docker コンテナを起動する
-
-- make ps
-
-  - docker コンテナの状態を表示する
-
-- make down
-
-  - docker コンテナを停止する
-
-- make bash
-
-  - app コンテナで ユーザ:docker の bash を起動する
-
-- make migrate-seed
-
-  - laravelapp のマイグレーションとシーディングを行う
-
-- make init
-
-  - docker コンテナのビルドと設定、起動を行う

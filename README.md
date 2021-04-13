@@ -75,21 +75,3 @@
   ```
   make migrate-seed
   ```
-
-## artisan を使う方法
-
-- 例 1) migration を行う方法
-
-  - app コンテナの bash で 下記のコマンドを実行する
-
-    ```
-    docker@efba441bb520:/var/www/html/laravelapp$ php artisan migrate
-    ```
-
-- 例 2) HelloController を作成する方法
-
-  - app コンテナの bash で 下記のコマンドを実行する
-
-    ```
-    docker@efba441bb520:/var/www/html/laravelapp$ php artisan make:controller HelloController
-    ```

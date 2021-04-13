@@ -2,13 +2,7 @@
 
 - notion の案内をご確認ください
 
-  - https://www.notion.so/codegym/Laravel-ab9be9446a144a8eb46438750e631675
-
-- `make` から始まるコマンド(`make init` 等)は、Makefile があるディレクトリで実行すること
-- `docker-compose` から始まるコマンド(`docker-compose ps` 等)は、docker-compose.yml があるディレクトリで実行すること
-- ホスト側で html 配下のファイルを編集すれば app コンテナに反映される
-- composer コマンドや artisan コマンドは app コンテナの bash で実行する
-- mysql のコマンドライン操作は db コンテナの mysql で実行する
+  - https://www.notion.so/codegym/Laravel-8f99fe83a527475db45ec42a8e02f75a
 
 ## 初回セットアップ手順
 

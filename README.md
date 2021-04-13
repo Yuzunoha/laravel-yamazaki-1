@@ -68,6 +68,8 @@
 
   - `exit` コマンドで mysql から抜けられる
 
+  - このコマンドは教科書の msyql のコマンドラインに root ユーザで接続する方法と同等です
+
 ## マイグレーションとシーディングを行う方法
 
 - 下記のコマンドを実行する
@@ -78,7 +80,7 @@
 
 ## 例
 
-- マイグレーションファイルを作成する
+- artisan コマンドでマイグレーションファイルを作成する
 
   - app コンテナの bash で下記のコマンドを実行する
 
@@ -86,10 +88,10 @@
     docker@39983adf6bac:/var/www/html/cms$ php artisan make:migration create_books_table --create=books
     ```
 
-- マイグレーションを実行する
+- artisan コマンドでモデルを作成する
 
   - app コンテナの bash で下記のコマンドを実行する
 
     ```
-    docker@39983adf6bac:/var/www/html/cms$ php artisan migrate
+    docker@39983adf6bac:/var/www/html/cms$ php artisan make:model Book
     ```

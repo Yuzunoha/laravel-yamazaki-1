@@ -1,6 +1,6 @@
 ## はじめに
 
-- 下記の notion をご確認ください
+- notion の案内をご確認ください
 
   - https://www.notion.so/codegym/Laravel-ab9be9446a144a8eb46438750e631675
 

@@ -1,5 +1,9 @@
 ## まえがき
 
+- はじめに下記の notion をご確認ください
+
+  - https://www.notion.so/codegym/Laravel-ab9be9446a144a8eb46438750e631675
+
 - yuzunoha へ。まえがきはすべて notion に飛ばせ
 - `make` から始まるコマンド(`make init` 等)は、Makefile があるディレクトリで実行すること
 - `docker-compose` から始まるコマンド(`docker-compose ps` 等)は、docker-compose.yml があるディレクトリで実行すること
